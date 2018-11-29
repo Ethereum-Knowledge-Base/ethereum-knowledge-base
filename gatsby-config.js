@@ -1,6 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: 'Learn Web3',
+    title: `Learn Web3`,
+    baseUrl: `https://learnweb3.com`,
+    homepageTitle: `Learn Web3 - Education on Web 3.0`,
+    description: `Hub for Education on the new Web 3.0 and cryptocurrencies`,
+    keywords: `education, learning, web3, blockchain, tokens, cryptocurrency, wallet, ethereum, bitcoin`,
+    socialCard: `learn-web3-social.png`,
+    twitterUsername: `@learnweb3`,
+    facebookId: `240511650174545`,
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -11,8 +18,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -22,11 +27,11 @@ module.exports = {
         background_color: '#294390',
         theme_color: '#eb4669',
         display: 'minimal-ui',
-        icon: 'src/images/learn-web3-draft.png', // This path is relative to the root of the site.
+        icon: 'src/images/learn-web3-logo.png', // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-styled-components',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
   ],
 }
