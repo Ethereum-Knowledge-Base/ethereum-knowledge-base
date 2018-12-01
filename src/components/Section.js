@@ -22,7 +22,9 @@ const SSection = styled.div`
 
 const Section = ({ children, active, dark, bgColor }) => {
   if (active) {
-    document.body.style.background = `rgb(${bgColor})`
+    if (typeof window !== 'undefined') {
+      document.body.style.background = `rgb(${bgColor})`
+    }
   }
   return (
     <SSectionWrapper dark={dark} bgColor={bgColor}>
