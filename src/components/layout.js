@@ -1,87 +1,92 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { createGlobalStyle } from 'styled-components'
-import { StaticQuery, graphql } from 'gatsby'
+import React, { Component } from 'react'
+import styled from 'styled-components'
 
-import Header from './header'
-import { globalStyle } from '../styles'
+import Section from './Section'
+import Header from './Header'
 
-const GlobalStyle = createGlobalStyle`${globalStyle}`
+const SContent = styled.div`
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  background-color: ${({ bgColor }) => bgColor};
+`
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            baseUrl
-            homepageTitle
-            description
-            keywords
-            socialCard
-            twitterUsername
-            facebookId
-          }
-        }
+class SectionController extends Component {
+  state = {
+    lastScrollTop: 0,
+    activeIndexTop: 0,
+    activeIndexRight: 0,
+  }
+
+  componentDidMount() {
+    this.setActiveIndex()
+    window.onscroll = this.setActiveIndex
+  }
+
+  setActiveIndex = () => {
+    const { lastScrollTop } = this.state
+    const { sections } = this.props
+    const windowHeight = window.innerHeight
+    const windowOffset = window.pageYOffset
+    const direction = lastScrollTop < windowOffset ? 'up' : 'down'
+    const sectionCount = sections.length
+    const headerOffsetTop = 50
+    const headerOffsetRight =
+      direction === 'down'
+        ? (windowHeight - sectionCount * 50) / 2
+        : (windowHeight + sectionCount * 50) / 2
+    let activeIndexTop = null
+    let activeIndexRight = null
+    for (let sectionIndex = 0; sectionIndex < sectionCount; sectionIndex++) {
+      let sectionOffset = sectionIndex * windowHeight
+
+      let sectionOffsetTop = sectionOffset - headerOffsetTop
+      if (windowOffset >= sectionOffsetTop) {
+        activeIndexTop = sectionIndex
       }
-    `}
-    render={data => {
-      const {
-        baseUrl,
-        homepageTitle,
-        description,
-        keywords,
-        socialCard,
-        twitterUsername,
-        facebookId,
-      } = data.site.siteMetadata
-      return (
-        <>
-          <Helmet
-            title={homepageTitle}
-            meta={[
-              { name: 'description', content: description },
-              { name: 'keywords', content: keywords },
 
-              { name: 'twitter:card', content: 'summary_large_image' },
-              { name: 'twitter:site', content: twitterUsername },
-              { name: 'twitter:title', content: homepageTitle },
-              { name: 'twitter:description', content: description },
-              { name: 'twitter:img:src', content: `${baseUrl}/${socialCard}` },
+      let sectionOffsetRight = sectionOffset - headerOffsetRight
+      if (windowOffset >= sectionOffsetRight) {
+        activeIndexRight = sectionIndex
+      }
+    }
+    this.setState({
+      activeIndexTop,
+      activeIndexRight,
+      lastScrollTop: windowOffset,
+    })
+  }
 
-              { name: 'og:title', content: homepageTitle },
-              { name: 'og:type', content: 'website' },
-              { name: 'og:url', content: baseUrl },
-              { name: 'og:image', content: `${baseUrl}/${socialCard}` },
-              { name: 'og:description', content: description },
+  componentWillUnmount() {
+    window.onscroll = null
+  }
 
-              { name: 'og:site_name', content: homepageTitle },
-              { name: 'fb:admins', content: facebookId },
-            ]}
-          >
-            <html lang="en" />
-          </Helmet>
-          <GlobalStyle />
-          <Header siteTitle={homepageTitle} />
-          <div
-            style={{
-              margin: '0 auto',
-              maxWidth: 960,
-              padding: '0px 1.0875rem 1.45rem',
-              paddingTop: 0,
-            }}
-          >
-            {children}
-          </div>
-        </>
-      )
-    }}
-  />
-)
+  render() {
+    const { activeIndexTop, activeIndexRight } = this.state
+    const { sections } = this.props
+    return (
+      <>
+        <Header
+          activeIndexTop={activeIndexTop}
+          activeIndexRight={activeIndexRight}
+          sections={sections}
+        />
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+        <SContent>
+          {sections.map(({ title, bgColor, content, dark }, idx) => (
+            <Section
+              key={title}
+              bgColor={bgColor}
+              dark={dark}
+              active={idx === activeIndexTop}
+            >
+              {content()}
+            </Section>
+          ))}
+        </SContent>
+      </>
+    )
+  }
 }
 
-export default Layout
+export default SectionController
