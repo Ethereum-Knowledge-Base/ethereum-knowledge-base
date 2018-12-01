@@ -24,4 +24,10 @@ const Icon = ({ icon, color, size, ...props }) => (
   </SIconWrapper>
 )
 
+Icon.propTypes = {
+  icon: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
+  size: PropTypes.string.isRequired,
+}
+
 export default Icon
