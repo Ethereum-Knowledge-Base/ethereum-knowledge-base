@@ -12,8 +12,8 @@ const SImg = styled.img`
 `
 
 const Image = ({ src, maxWidth, alt, ...props }) => (
-  <SImgWrapper maxWidth={maxWidth}>
-    <SImg src={src} alt={alt} {...props} />
+  <SImgWrapper maxWidth={maxWidth} {...props}>
+    <SImg src={src} alt={alt} />
   </SImgWrapper>
 )
 

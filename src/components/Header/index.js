@@ -16,6 +16,7 @@ const SHeaderWrapper = styled.div`
   left: 0;
   pointer-events: none;
   z-index: 1000;
+  backface-visibility: hidden;
 `
 
 const SHeaderContainer = styled.div`

@@ -4,36 +4,58 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import Image from '../components/Image'
 import doorImg from '../images/door.png'
-import { colors, fonts } from '../styles'
+import { colors, fonts, responsive } from '../styles'
 
 const SHeroWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
   z-index: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (${responsive.sm.min}) {
+    display: block;
+  }
 `
 
 const SHeroBackground = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   display: flex;
-  justify-content: center;
+  justify-content: ${({ align }) => align};
   align-items: center;
   z-index: -1;
+
+  @media screen and (${responsive.sm.min}) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
 `
 
 const SHeroImage = styled(Image)`
-  margin-left: 100px;
+  max-width: 100%;
+
+  @media screen and (${responsive.sm.min}) {
+    margin-left: 7vw;
+    max-width: 60vw;
+  }
 `
 
 const SHeroContent = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100%:
   display: flex;
   z-index: 1;
+  margin: 40px auto;
+
+  @media screen and (${responsive.sm.min}) {
+    margin: 0;
+    height: 100%;
+  }
 `
 
 const SHeroText = styled.div`
@@ -42,10 +64,20 @@ const SHeroText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: Eczar;
-  font-size: 180px;
-  font-weight: 800;
-  line-height: 150px;
+  font-family: ${fonts.family.Eczar};
+  font-weight: ${fonts.weight.extrabold};
+  font-size: 25vw;
+  line-height: 0.833em;
+
+  @media screen and (${responsive.sm.min}) {
+    font-size: 12.7vw;
+    line-height: 0.833em;
+  }
+
+  @media screen and (${responsive.xl.min}) {
+    font-size: 178px;
+    line-height: 0.833em;
+  }
 `
 
 const sections = [
@@ -57,12 +89,12 @@ const sections = [
       <SHeroWrapper>
         <SHeroContent>
           <SHeroText>
-            <span>{'Learn'}</span>
-            <span>{'Web3.'}</span>
+            <div>{'Learn'}</div>
+            <div>{'Web3.'}</div>
           </SHeroText>
         </SHeroContent>
-        <SHeroBackground>
-          <SHeroImage src={doorImg} maxWidth={850} alt="LW3" />
+        <SHeroBackground align={'center'}>
+          <SHeroImage src={doorImg} maxWidth={850} alt="Welcome to Web3" />
         </SHeroBackground>
       </SHeroWrapper>
     ),

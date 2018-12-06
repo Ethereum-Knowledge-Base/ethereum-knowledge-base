@@ -62,12 +62,16 @@ export const responsive = {
     min: 'min-width: 1023px',
     max: 'max-width: 1024px',
   },
+  xl: {
+    min: 'min-width: 1399px',
+    max: 'max-width: 1400px',
+  },
 }
 
 export const globalStyle = `
   @import url('https://fonts.googleapis.com/css?family=Eczar:600,700,800|Open+Sans:400,700,800');
 
-  html, body {
+  html, body, #___gatsby {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -102,6 +106,7 @@ export const globalStyle = `
 
   [tabindex] {
     outline: none;
+    width: 100%;
     height: 100%;
   }
 

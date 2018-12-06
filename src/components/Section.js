@@ -6,8 +6,9 @@ import { colors } from '../styles'
 
 const SSectionWrapper = styled.div`
   position: relative;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
   color: ${({ dark }) => `rgb(${dark ? colors.dark : colors.white})`};
   background-color: ${({ bgColor }) => `rgb(${bgColor})`};
 `

@@ -6,6 +6,8 @@ import Header from './Header'
 
 const SContent = styled.div`
   position: relative;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   padding: 0;
   background-color: ${({ bgColor }) => bgColor};

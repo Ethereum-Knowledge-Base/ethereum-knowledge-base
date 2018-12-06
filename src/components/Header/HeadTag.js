@@ -39,6 +39,12 @@ const HeadTag = () => (
           <Helmet
             title={homepageTitle}
             meta={[
+              {
+                name: 'viewport',
+                content:
+                  'width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no',
+              },
+
               { name: 'description', content: description },
               { name: 'keywords', content: keywords },
 
