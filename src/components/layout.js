@@ -11,7 +11,7 @@ const SContent = styled.div`
   background-color: ${({ bgColor }) => bgColor};
 `
 
-class SectionController extends Component {
+class Layout extends Component {
   state = {
     lastScrollTop: 0,
     activeIndexTop: 0,
@@ -89,4 +89,4 @@ class SectionController extends Component {
   }
 }
 
-export default SectionController
+export default Layout
