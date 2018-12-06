@@ -15,6 +15,7 @@ const SHeaderContainerTop = styled.div`
   position: absolute;
   pointer-events: auto;
   padding: 35px;
+  padding-bottom: 0;
   width: 100%;
   top: 0;
 `
