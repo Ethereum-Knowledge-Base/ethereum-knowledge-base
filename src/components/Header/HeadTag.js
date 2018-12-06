@@ -7,7 +7,7 @@ import { globalStyle } from '../../styles'
 
 const GlobalStyle = createGlobalStyle`${globalStyle}`
 
-const Head = () => (
+const HeadTag = () => (
   <StaticQuery
     query={graphql`
       query SiteMetadataQuery {
@@ -67,4 +67,4 @@ const Head = () => (
   />
 )
 
-export default Head
+export default HeadTag

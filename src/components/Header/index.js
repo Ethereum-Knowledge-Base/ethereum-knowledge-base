@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import Head from './Head'
+import HeadTag from './HeadTag'
 import HeaderTop from './HeaderTop'
 import HeaderRight from './HeaderRight'
 
@@ -29,7 +29,7 @@ const SHeaderContainer = styled.div`
 
 const Header = ({ activeIndexTop, activeIndexRight, sections }) => (
   <>
-    <Head />
+    <HeadTag />
     <SHeaderWrapper>
       <SHeaderContainer>
         <HeaderRight
