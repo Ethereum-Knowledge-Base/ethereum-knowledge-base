@@ -46,7 +46,7 @@ const SAboutText = styled.div`
 
 const SHeroContent = styled.div`
   width: 100%;
-  height: 100%:
+  height: 100%;
   display: flex;
   z-index: 1;
   margin: 40px auto;
