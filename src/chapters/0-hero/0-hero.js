@@ -43,6 +43,10 @@ const SImage = styled(Image)`
     margin-right: 10vw;
     max-width: 60vw;
   }
+
+  @media screen and (${responsive.xl.min}) {
+    max-width: 840px;
+  }
 `
 
 const SContent = styled.div`
