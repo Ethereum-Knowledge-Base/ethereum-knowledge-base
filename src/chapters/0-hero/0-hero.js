@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Image from '../../components/image'
+import Image from '../../components/Image'
 import doorImg from '../../images/door.png'
 import { colors, fonts, responsive } from '../../styles'
 
