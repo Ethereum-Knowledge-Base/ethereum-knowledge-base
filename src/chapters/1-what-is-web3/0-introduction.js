@@ -68,7 +68,7 @@ const SContent = styled.div`
   p {
     width: 100%;
     max-width: 660px;
-    color: #000000;
+
     font-family: ${fonts.family.OpenSans};
     font-size: ${fonts.size.h5};
   }
