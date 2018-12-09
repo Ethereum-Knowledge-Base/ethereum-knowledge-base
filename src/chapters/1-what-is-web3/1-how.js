@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Image from '../../components/Image'
-import plantImg from '../../images/plant-triangle-merged.png'
+import howImg from '../../images/how.png'
 import { colors, fonts, responsive } from '../../styles'
 
 const SWrapper = styled.div`
@@ -60,7 +60,7 @@ const SContent = styled.div`
 
   h1 {
     width: 100%;
-    max-width: 380px;
+    max-width: 470px;
     font-family: ${fonts.family.Eczar};
     line-height: 1;
   }
@@ -73,30 +73,34 @@ const SContent = styled.div`
     font-size: ${fonts.size.h5};
   }
 `
-
-const Introduction = {
-  title: 'Introduction',
-  bgColor: colors.cream,
+const How = {
+  title: 'How We Got Here',
+  bgColor: colors.white,
   dark: true,
-  alignment: 'left',
+  alignment: 'right',
 }
 
-Introduction.content = () => (
+How.content = () => (
   <SWrapper>
-    <SContent align={Introduction.alignment}>
+    <SContent align={How.alignment}>
       <div>
-        <h1>{'What is this new internet about?'}</h1>
+        <h1>{'How we got here'}</h1>
         <p>
           {
-            'You have probably heard of Bitcoin, Ethereum, the concept of cryptocurrencies as well as smart contracts. And while on the surface, yes - they are another form of digital money, they are technologies that belong to a movement that is working towards building a new version of the internet that will bring bring greater digital liberty to each and every one of us.'
+            'Going back to when the internet started, only email and simple static websites were possible. With the second version of the internet, we saw the the rise of web applications in the form of mobile apps and web platforms such as Facebook and Instagram. While a new era dawned upon society, we quickly became aware of the deeply flawed models that this internet was built upon. The second version of the internet, also known as Web 2.0, led to the centralisation of data on the internet and has subsequently come at the cost our digital freedom as well as our privacy.'
+          }
+        </p>
+        <p>
+          {
+            'Web3 is the next generation of websites and applications built on top of blockchain technologies. This current technology powers the cryptocurrency: Bitcoin as well as other decentralised computing platforms such as Ethereum. As a user, web3 products allows the you to completely own and control your own data, preventing it to be leaked and compromised by internet companies. And this happens through the magic of cryptography and mathematics.'
           }
         </p>
       </div>
     </SContent>
-    <SBackground align={Introduction.alignment}>
-      <SImage src={plantImg} maxWidth={850} alt="Introduction" />
+    <SBackground align={How.alignment}>
+      <SImage src={howImg} maxWidth={850} alt="How we got here" />
     </SBackground>
   </SWrapper>
 )
 
-export default Introduction
+export default How

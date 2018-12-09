@@ -1,8 +1,8 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { Hero, WhatIsWeb3 } from '../chapters'
+import chapters from '../chapters'
 
-const sections = [...Hero, ...WhatIsWeb3]
+const sections = [...chapters.Hero, ...chapters.WhatIsWeb3]
 
 const IndexPage = () => <Layout sections={sections} />
 

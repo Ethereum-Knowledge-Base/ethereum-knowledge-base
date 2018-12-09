@@ -8,6 +8,7 @@ const SHeaderContainerRight = styled.div`
   pointer-events: auto;
   padding: 35px;
   padding-left: 0;
+  margin-right: -35px;
   display: flex;
   justify-content: center;
   align-items: center;

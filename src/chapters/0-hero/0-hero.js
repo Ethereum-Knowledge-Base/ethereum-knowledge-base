@@ -5,7 +5,7 @@ import Image from '../../components/Image'
 import doorImg from '../../images/door.png'
 import { colors, fonts, responsive } from '../../styles'
 
-const SHeroWrapper = styled.div`
+const SWrapper = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
@@ -20,9 +20,10 @@ const SHeroWrapper = styled.div`
   }
 `
 
-const SHeroBackground = styled.div`
+const SBackground = styled.div`
   display: flex;
-  justify-content: ${({ align }) => align};
+  justify-content: ${({ align }) =>
+    align === 'left' ? 'flex-end' : 'flex-start'};
   align-items: center;
   z-index: -1;
 
@@ -35,47 +36,47 @@ const SHeroBackground = styled.div`
   }
 `
 
-const SHeroImage = styled(Image)`
+const SImage = styled(Image)`
   max-width: 100%;
 
   @media screen and (${responsive.sm.min}) {
-    margin-left: 7vw;
+    margin-right: 10vw;
     max-width: 60vw;
   }
 `
 
-const SHeroContent = styled.div`
+const SContent = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
   z-index: 1;
   margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: ${({ align }) => (align === 'left' ? 'flex-start' : 'flex-end')};
+  justify-content: center;
+
+  h1 {
+    font-family: ${fonts.family.Eczar};
+    font-weight: ${fonts.weight.extrabold};
+    font-size: 25vw;
+    line-height: 0.833em;
+    margin: 0;
+  }
 
   @media screen and (${responsive.sm.min}) {
     margin: 0;
-    height: 100%;
-  }
-`
 
-const SHeroText = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-family: ${fonts.family.Eczar};
-  font-weight: ${fonts.weight.extrabold};
-  font-size: 25vw;
-  line-height: 0.833em;
-
-  @media screen and (${responsive.sm.min}) {
-    font-size: 12.7vw;
-    line-height: 0.833em;
+    h1 {
+      font-size: 12.7vw;
+      line-height: 0.833em;
+    }
   }
 
   @media screen and (${responsive.xl.min}) {
-    font-size: 178px;
-    line-height: 0.833em;
+    h1 {
+      font-size: 178px;
+      line-height: 0.833em;
+    }
   }
 `
 
@@ -83,19 +84,21 @@ const Hero = {
   title: 'Hero',
   bgColor: colors.blue,
   dark: false,
-  content: () => (
-    <SHeroWrapper>
-      <SHeroContent>
-        <SHeroText>
-          <div>{'Learn'}</div>
-          <div>{'Web3.'}</div>
-        </SHeroText>
-      </SHeroContent>
-      <SHeroBackground align={'center'}>
-        <SHeroImage src={doorImg} maxWidth={850} alt="Welcome to Web3" />
-      </SHeroBackground>
-    </SHeroWrapper>
-  ),
+  alignment: 'left',
 }
+
+Hero.content = () => (
+  <SWrapper>
+    <SContent align={Hero.alignment}>
+      <div>
+        <h1>{'Learn'}</h1>
+        <h1>{'Web3.'}</h1>
+      </div>
+    </SContent>
+    <SBackground align={Hero.alignment}>
+      <SImage src={doorImg} maxWidth={850} alt="Hero" />
+    </SBackground>
+  </SWrapper>
+)
 
 export default Hero
