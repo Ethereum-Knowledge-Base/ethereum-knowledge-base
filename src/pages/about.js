@@ -96,7 +96,7 @@ const sections = [
           <SAboutText>
             <div>
               {
-                'LearnWeb3 is a hub for curated educational content that answers frequently asked questions about Ethereum, Blockchain and Web3 technologies in an interactive and user-friendly approach'
+                'LearnWeb3 is a hub for curated educational content that answers frequently asked questions about Web3 Technologies, Blockchain and Ethereum in an interactive and user-friendly approach'
               }
             </div>
           </SAboutText>
